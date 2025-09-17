@@ -81,7 +81,7 @@ $httpClient.get(url, function(error, response, body) {
     let weatherCN = weatherInfo[0];
     let weatherEmoji = weatherInfo[1];
 
-    output.content = `${cityName}：${feelslike}℃\n天气：${weatherCN}${weatherEmoji}\n温度：${mintemp}℃～${maxtemp}℃`;
+    output.content = `当前：${cityName}${feelslike}℃\n天气：${weatherCN}${weatherEmoji}\n温度：${mintemp}℃～${maxtemp}℃`;
     
     $done(output);
 });
