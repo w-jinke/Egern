@@ -1,0 +1,13 @@
+name: 节点信息查询
+scriptings:
+- generic:
+    name: 节点面板
+    script_url: https://github.com/w-jinke/egern/raw/refs/heads/main/js/IPLocation.js
+    timeout: 5
+- http_response:
+    name: IP信息
+    match: ^http:\/\/ipinfo\.io\/json
+    script_url: https://github.com/w-jinke/egern/raw/refs/heads/main/js/IPinfo.js
+    timeout: 5
+panels:
+- name: 节点面板
