@@ -86,7 +86,7 @@ if (/ipinfo\.io\/json/.test(url)) {
         countryName = countryCode;
     }
 
-    let position = countryName + "｜" + countryCode + flag;
+    let position = countryName + "-" + countryCode + flag;
 
     body = JSON.stringify({
         "IP": obj.ip,
