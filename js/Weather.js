@@ -98,7 +98,7 @@ $httpClient.get(url, function(error, response, body) {
 
     let windDesc = windLevel(wind);
 
-    output.content = `当前：${cityName}${feelslike}℃\n天气：${weatherCN}${weatherEmoji}\n温度：${mintemp}℃～${maxtemp}℃\n风速：${wind} km/h ${windDesc}`;
+    output.content = `天气：${weatherCN}${weatherEmoji}\n当前：${cityName}${feelslike}℃\n温度：${mintemp}℃～${maxtemp}℃\n风速：${wind} km/h ${windDesc}`;
     
     $done(output);
 });
