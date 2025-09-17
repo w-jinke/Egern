@@ -77,8 +77,7 @@ $httpClient.get(url, function (error, response, data) {
     title: "节点信息",
     icon: "location.north.circle.fill",
     "icon-color": "#0090FF",
-    content: `国家：${countryName}-${countryCode}${flagEmoji}\nIP-${ip}\n服务${org}\n坐标${loc}`
+    output.content = `IP - ${ip}\n位置：${countryName} - ${countryCode}${flagEmoji}\n服务：${org}\n坐标：${loc}`;
   };
-
   $done(output);
 });
