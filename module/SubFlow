@@ -1,0 +1,13 @@
+name: 订阅流量查询
+compat_arguments:
+  URL:
+  重置:
+scriptings:
+- generic:
+    name: 订阅面板
+    script_url: https://github.com/w-jinke/egern/raw/refs/heads/main/js/FlowMeter.js
+    timeout: 10
+    arguments:
+      _compat.$argument: "url={{{URL}}}&resetDay={{{重置}}}"
+panels:
+- name: 订阅面板
