@@ -25,7 +25,6 @@ $httpClient.get(url, function(error, response, body) {
     let mintemp = day.mintemp_c;
     let feelslike = day.avgtemp_c;
     let code = day.condition.code;
-
     let codeMap = {
         1000:["晴","☀️"],
         1003:["局部多云","⛅"],
@@ -80,8 +79,26 @@ $httpClient.get(url, function(error, response, body) {
     let weatherInfo = codeMap[code];
     let weatherCN = weatherInfo[0];
     let weatherEmoji = weatherInfo[1];
+    let wind = obj.current.wind_kph;
+    function windLevel(kph) {
+        if (kph <= 1) return "0级";
+        if (kph <= 5) return "1级";
+        if (kph <= 11) return "2级";
+        if (kph <= 19) return "3级";
+        if (kph <= 28) return "4级";
+        if (kph <= 38) return "5级";
+        if (kph <= 49) return "6级";
+        if (kph <= 61) return "7级";
+        if (kph <= 74) return "8级";
+        if (kph <= 88) return "9级";
+        if (kph <= 102) return "10级";
+        if (kph <= 117) return "11级";
+        return "12级";
+    }
 
-    output.content = `当前：${cityName}${feelslike}℃\n天气：${weatherCN}${weatherEmoji}\n温度：${mintemp}℃～${maxtemp}℃`;
+    let windDesc = windLevel(wind);
+
+    output.content = `当前：${cityName}${feelslike}℃\n天气：${weatherCN}${weatherEmoji}\n温度：${mintemp}℃～${maxtemp}℃\n风速：${wind} km/h ${windDesc}`;
     
     $done(output);
 });
