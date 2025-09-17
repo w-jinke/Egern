@@ -9,5 +9,6 @@ scriptings:
     match: ^http:\/\/ipinfo\.io\/json
     script_url: https://github.com/w-jinke/egern/raw/refs/heads/main/js/IPinfo.js
     timeout: 5
+    body_required: true
 panels:
 - name: 节点面板
