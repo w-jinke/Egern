@@ -66,25 +66,19 @@ function countryCodeToFlagEmoji(code) {
 }
 
 $httpClient.get(url, function (error, response, data) {
+  let obj = JSON.parse(data);
+  let ip = obj.ip || "";
+  let countryCode = obj.country || "";
+  let countryName = countryMap[countryCode] || countryCode;
+  let flagEmoji = countryCodeToFlagEmoji(countryCode);
+  let loc = (obj.loc || "").replace(",", "-");
+  let org = (obj.org || "").replace(/^AS\d+\s*/, "");
   let output = {
     title: "节点信息",
     icon: "location.north.circle.fill",
-    "icon-color": "#0090FF"
+    "icon-color": "#0090FF",
+    content: `国家：${countryName}-${countryCode}${flagEmoji}\nIP-${ip}\n服务${org}\n坐标${loc}`
   };
-
-  if (error || !data) {
-    output.content = "获取失败";
-  } else {
-    let obj = JSON.parse(data);
-    let ip = obj.ip || "";
-    let countryCode = obj.country || "";
-    let countryName = countryMap[countryCode] || countryCode;
-    let flagEmoji = countryCodeToFlagEmoji(countryCode);
-    let loc = (obj.loc || "").replace(",", "-");
-    let org = (obj.org || "").replace(/^AS\d+\s*/, "");
-
-    output.content = `IP-${ip}\n国家：${countryName}-${countryCode}${flagEmoji}\n坐标：${loc}\n服务：${org}`;
-  }
 
   $done(output);
 });
