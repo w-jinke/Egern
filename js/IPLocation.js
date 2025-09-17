@@ -57,20 +57,28 @@ let countryMap = {
   "CU": "古巴"
 };
 
+function countryCodeToEmoji(code) {
+  if (!code || code.length !== 2) return code;
+  const A = 0x1F1E6;
+  return String.fromCodePoint(
+    A + code.charCodeAt(0) - 65,
+    A + code.charCodeAt(1) - 65
+  );
+}
+
 $httpClient.get(url, function (error, response, data) {
   let obj = JSON.parse(data);
   let ip = obj.ip || "";
   let countryCode = obj.country || "";
-  let countryName = countryMap[countryCode] || countryCode;
+  let countryEmoji = countryCodeToEmoji(countryCode);
   let loc = (obj.loc || "").replace(",", "-");
   let org = (obj.org || "").replace(/^AS\d+\s*/, "");
-  
+
   let output = {
     title: "节点信息",
     icon: "location.north.circle.fill",
     "icon-color": "#0090FF",
-    content: `位置：${countryName}-IP${ip}\n服务：${org}\n坐标：${loc}`
-    
-  };  
+    content: `IP${ip}\n位置：${obj.country || ""}-${countryCode}${countryEmoji}\n服务：${org}\n坐标：${loc}`
+  };
   $done(output);
 });
