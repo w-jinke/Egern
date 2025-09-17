@@ -1,0 +1,12 @@
+name: 天气信息查询
+compat_arguments:
+  城市:
+scriptings:
+- generic:
+    name: 天气面板
+    script_url: https://github.com/w-jinke/egern/raw/refs/heads/main/js/Weather.js
+    timeout: 10
+    arguments:
+      _compat.$argument: "city={{{城市}}}"
+panels:
+- name: 天气面板
