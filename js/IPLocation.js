@@ -83,7 +83,7 @@ $httpClient.get(url, function (error, response, data) {
     let loc = (obj.loc || "").replace(",", "-");
     let org = (obj.org || "").replace(/^AS\d+\s*/, "");
 
-    output.content = `IP：${ip}\n国家：${countryName}-${countryCode}${flagEmoji}\n坐标：${loc}\n服务：${org}`;
+    output.content = `IP-${ip}\n国家：${countryName}-${countryCode}${flagEmoji}\n坐标：${loc}\n服务：${org}`;
   }
 
   $done(output);
