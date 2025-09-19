@@ -78,7 +78,6 @@ if (/ipinfo\.io\/json/.test(url)) {
     let provider = orgStr.replace(asPattern, "");
     let locStr = obj.loc;
     let locParts = locStr.split(",");
-    let loc = locParts.join("-");
     let countryCode = obj.country;
     let flag = countryCodeToFlag(countryCode);
     let countryName = countryMap[countryCode];
@@ -91,8 +90,7 @@ if (/ipinfo\.io\/json/.test(url)) {
     body = JSON.stringify({
         "IP": obj.ip,
         "位置": position,
-        "服务": provider,
-        "纬度": loc
+        "服务": provider
     });
 }
 
