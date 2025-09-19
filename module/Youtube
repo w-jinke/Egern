@@ -1,4 +1,4 @@
-name: YouTubeEnhance
+name: YoutubeMusic
 map_locals:
 - match: ^https:\/\/[\w-]+\.googlevideo\.com\/initplayback.+&oad
   status_code: 200
