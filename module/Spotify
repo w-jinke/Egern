@@ -1,4 +1,4 @@
-name: SpotifyPremium
+name: Spotify音乐
 url_rewrites:
 - match: ^https:\/\/(?:\w+-spclient|spclient\.wg)\.spotify\.com(?::443)?\/artistview\/v1\/artist\/(.*)&platform=iphone
   location: https://spclient.wg.spotify.com/artistview/v1/artist/$1&platform=ipad
