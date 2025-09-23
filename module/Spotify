@@ -1,12 +1,15 @@
 name: Spotify音乐
+
 url_rewrites:
 - match: ^https:\/\/(?:\w+-spclient|spclient\.wg)\.spotify\.com(?::443)?\/artistview\/v1\/artist\/(.*)&platform=iphone
   location: https://spclient.wg.spotify.com/artistview/v1/artist/$1&platform=ipad
   status_code: 307
+
 map_locals:
 - match: ^https:\/\/spclient\.wg\.spotify\.com\/(watch-feed-entrypoints|ads\/v3\/ads|pendragon|merch-npv-service)
   status_code: 200
   body: ''
+
 scriptings:
 - http_response:
     name: 解锁处理
@@ -16,6 +19,7 @@ scriptings:
       _compat.$argument: '{"tab":true,"useractivity":true}'
     body_required: true
     binary_body: true
+
 mitm:
   hostnames:
     includes:
