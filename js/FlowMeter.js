@@ -14,7 +14,7 @@ $argument.split("&").forEach(p => {
 
     const content = await new Promise(resolve => {
         $httpClient.get(
-            { url: args.url, headers: { "User-Agent": "Quantumult%20X/1.5.2" } },
+            { url: args.url, headers: { "User-Agent": "Loon/898 CFNetwork/3860.100.1 Darwin/25.0.0" } },
             (err, resp) => {
                 if (err || !resp || resp.status !== 200) {
                     resolve(`请求失败状态码：${resp ? resp.status : "错误"}`);
