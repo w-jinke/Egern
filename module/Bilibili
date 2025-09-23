@@ -36,8 +36,10 @@ map_locals:
 scriptings:
 - http_response:
     name: 广告处理
-    match: ^https:\/\/(app\.bilibili\.com|grpc\.biliapi\.net)\/(?:bilibili.app.interface.v1.Teenagers/ModeStatus|bilibili.app.(?:view|viewunite).v1.View/(?:View|ViewProgress)|bilibili.main.community.reply.v1.Reply/MainList|bilibili.polymer.app.search.v1.Search/SearchAll|bilibili.app.dynamic.v2.Dynamic/DynAll)$
-    script_url: https://raw.githubusercontent.com/Maasea/sgmodule/master/Script/Bilibili/bilibili.helper.js
+    match: ^https:\/\/(grpc\.biliapi\.net|app\.bilibili\.com)\/bilibili\.(app\.(show\.v1\.Popular\/Index|dynamic\.v2\.Dynamic\/DynAll|view(?:unite)?\.v1\.View\/(View|ViewProgress|RelatesFeed)|playurl\.v1\.PlayURL\/PlayView|playerunite\.v1\.Player\/PlayViewUnite)|polymer\.app\.search\.v1\.Search\/SearchAll|main\.community\.reply\.v1\.Reply\/MainList|pgc\.gateway\.player\.v2\.PlayURL\/PlayView)$
+    script_url: https://raw.githubusercontent.com/kokoryh/Sparkle/master/dist/bilibili.protobuf.response.js
+    arguments:
+      _compat.$argument: '{"purifyTopReplies":true}
     body_required: true
     binary_body: true
 mitm:
