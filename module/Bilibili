@@ -3,7 +3,7 @@ name: 哔哩哔哩
 body_rewrites:
 - response_jq:
     match: ^https:\/\/app\.bilibili\.com\/x\/v2\/splash\/(list|show|event\/list2)\?
-    filter: .data|=(with_entries(if .key|IN("show","list") then .value=[] else . end)|.max_time=0|.min_interval=99999999)
+    filter: .data |= with_entries(if .key | IN("show", "event_list") then .value = [] else . end)
 - response_jq:
     match: ^https:\/\/app\.bilibili\.com\/x\/v2\/search
     filter: .data|=map(select(.type!="recommend")|del(.search_ranking_meta))
