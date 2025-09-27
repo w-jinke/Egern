@@ -71,14 +71,13 @@ $httpClient.get(url, function (error, response, data) {
   let ip = obj.ip || "";
   let countryCode = obj.country || "";
   let countryEmoji = countryCodeToEmoji(countryCode);
-  let loc = (obj.loc || "").replace(",", "-");
   let org = (obj.org || "").replace(/^AS\d+\s*/, "");
 
   let output = {
     title: "节点信息",
     icon: "location.north.circle.fill",
     "icon-color": "#0090FF",
-    content: `位置：${countryMap[countryCode] || ""}-${countryCode}${countryEmoji}\n所属：IP${ip}\n服务：${org}\n坐标：${loc}`
+    content: `位置：${countryMap[countryCode] || ""}-${countryCode}${countryEmoji}\n所属：IP${ip}\n服务：${org}`
   };
   $done(output);
 });
