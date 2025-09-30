@@ -1,0 +1,19 @@
+name: Spotify音乐
+map_locals:
+- match: ^https:\/\/spclient\.wg\.spotify\.com\/(watch-feed-entrypoints|ads\/v3\/ads|pendragon|merch-npv-service)
+  status_code: 200
+  body: ''
+scriptings:
+- http_response:
+    name: 解锁处理
+    match: ^https:\/\/(?:\w+-spclient|spclient\.wg)\.spotify\.com(?::443)?\/(?:bootstrap|user-customization-service)
+    script_url: https://raw.githubusercontent.com/001ProMax/Surge/main/Script/Spotify.Crack.Dev.js
+    arguments:
+      _compat.$argument: '{"tab":true,"useractivity":true}'
+    body_required: true
+    binary_body: true
+mitm:
+  hostnames:
+    includes:
+    - '*-spclient.spotify.com'
+    - spclient.wg.spotify.com
