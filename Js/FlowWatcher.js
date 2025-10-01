@@ -17,6 +17,14 @@ if ($argument) {
     const urls = args.url.split("|").map(u => u.trim()).filter(u => u);
     const titles = args.title ? args.title.split("|").map(t => t.trim()) : [];
 
+    function formatBytes(bytes) {
+        if (bytes < 1024 * 1024 * 1024) {
+            return (bytes / 1024 / 1024).toFixed(2) + "MB";
+        } else {
+            return (bytes / 1024 / 1024 / 1024).toFixed(2) + "GB";
+        }
+    }
+
     async function fetchUsage(url, index) {
         return new Promise(resolve => {
             $httpClient.get(
@@ -51,7 +59,7 @@ if ($argument) {
                     if (titles[index]) lines.push(`机场：${titles[index]}`);
                     lines.push(
                         `已用：${percent}%`,
-                        `流量：${(used / 1024 / 1024 / 1024).toFixed(2)}GB - ${(total / 1024 / 1024 / 1024).toFixed(2)}GB`
+                        `流量：${formatBytes(used)} - ${formatBytes(total)}`
                     );
 
                     if (data.expire) {
